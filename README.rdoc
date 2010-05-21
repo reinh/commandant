@@ -1,9 +1,25 @@
 = commander
 
-Description goes here.
+The simplest possible command line subcommand tool. It provides about half of
+what you want and none of what you don't. If you don't like it, don't use it.
+
+Example:
+
+    #!/usr/bin/env ruby -rubygems -rcommander
+    include Commander
+
+    command :hello do
+      puts "Hello, World!"
+    end
+
+    command :argprint do |args| # Array of arguments, like ARGV
+      puts args
+    end
+
+    run
 
 == Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
