@@ -6,7 +6,6 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "commander"
     gem.summary = %Q{A simple library for writing commands with subcommands (like git)}
-    gem.description = %Q{TODO: longer description of your gem}
     gem.email = "reinh@reinh.com"
     gem.homepage = "http://github.com/reinh/commander"
     gem.authors = ["Rein Henrichs"]

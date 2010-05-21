@@ -48,11 +48,15 @@ module Commander
   end
   module_function :command
 
-  # Runs a given commandline by parsing the command name and arguments
+  # Runs a given commandline by parsing the command name and arguments. If no
+  # command is given, defaults to a command called :main. If that is not
+  # present, an UnknownCommand error will be raised.
   #
   # @param [Array] cmdline the command line args to be run
+  # @raise [UnknownCommand] command is unknown and no :main command is available
   def run(cmdline=ARGV)
     name, *args = cmdline
+    name, args = :main, [name, *args] if COMMANDS[name.to_sym].nil? && COMMANDS[:main]
     Commander.call name.to_sym, args
   end
   module_function :run
