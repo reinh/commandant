@@ -23,6 +23,18 @@ module Commander
     COMMANDS.clear
   end
 
+  # Creates an alias for each given command.
+  #
+  # @param [Hash<Symbol => Symbol>] commands the aliases to create ( new name => old name )
+  # @example
+  #   alias :br => :branch, :co => :checkout
+  def add_alias(commands)
+    commands.each do |new, old|
+      Commander::COMMANDS[new] = Commander::COMMANDS[old]
+    end
+  end
+  module_function :add_alias
+
   # Create a new command
   #
   # @param [Symbol] name the name of the command that is created

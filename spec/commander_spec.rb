@@ -31,6 +31,15 @@ describe Commander do
     end
   end
 
+  describe ".add_alias" do
+    it "creates an alias for a given command" do
+      Commander.command(:hello) { "hello" }
+      Commander.add_alias :hi => :hello
+
+      Commander.run(:hi).should == "hello"
+    end
+  end
+
   describe ".command" do
     subject { Commander.command(:test) { "this is a test" } }
     it "creates a new Command with the given name and command block" do
