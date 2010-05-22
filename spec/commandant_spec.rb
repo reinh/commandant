@@ -63,7 +63,7 @@ describe Commandant do
     end
 
     it "defaults to the :main command, if available" do
-      Commandant.run(%w{ some args }).should == 'main called with [:some, "args"]'
+      Commandant.run(%w{ some args }).should == 'main called with ["some", "args"]'
     end
 
     it "runs the main command if no arguments are passed" do
