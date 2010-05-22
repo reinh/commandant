@@ -48,7 +48,7 @@ describe Commander do
   end
 
   describe ".run" do
-    before { Commander.command(:main) {|args| "main called with #{args * ' '}" } }
+    before { Commander.command(:main) {|args| "main called with #{args.inspect}" } }
 
     it "runs the command specified" do
       Commander::COMMANDS[:main].should_receive(:call)
@@ -63,7 +63,11 @@ describe Commander do
     end
 
     it "defaults to the :main command, if available" do
-      Commander.run(%w{ some args }).should == "main called with some args"
+      Commander.run(%w{ some args }).should == 'main called with ["some", "args"]'
+    end
+
+    it "runs the main command if no arguments are passed" do
+      Commander.run(nil).should == "main called with []"
     end
 
     it "raises an errur of no main command is available" do
@@ -73,6 +77,7 @@ describe Commander do
         Commander.run(%w{ some args })
       }.should raise_error(Commander::UnknownCommand)
     end
+
   end
 
 end
