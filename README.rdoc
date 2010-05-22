@@ -5,7 +5,8 @@ what you want and none of what you don't. If you don't like it, don't use it.
 
 Example:
 
-    #!/usr/bin/env ruby -rubygems -rcommander
+    #!/usr/bin/env ruby -rubygems
+    require 'commander'
     include Commander
 
     command :hello do
