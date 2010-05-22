@@ -1,7 +1,7 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'commander/command'
+require 'commandant/command'
 
-module Commander
+module Commandant
   COMMANDS = {}
 
   class UnknownCommand < NameError
@@ -30,7 +30,7 @@ module Commander
   #   alias :br => :branch, :co => :checkout
   def add_alias(commands)
     commands.each do |new, old|
-      Commander::COMMANDS[new] = Commander::COMMANDS[old]
+      Commandant::COMMANDS[new] = Commandant::COMMANDS[old]
     end
   end
   module_function :add_alias
@@ -43,18 +43,18 @@ module Commander
   # @yieldparam [Array] args optional: arguments to the command (typically from ARGV)
   #
   # @example A Hello World! command
-  #   Commander.command :hello do
+  #   Commandant.command :hello do
   #     puts "Hello World!"
   #   end
   #
-  #   Commander.run "hello"
+  #   Commandant.run "hello"
   # 
   # @example A command with arguments
-  #   Commander.command :argprint do |args|
+  #   Commandant.command :argprint do |args|
   #     puts args
   #   end
   #
-  #   Commander.run "argprint foo bizz bazz"
+  #   Commandant.run "argprint foo bizz bazz"
   def command(name, description="", &command)
     Command.new(name, description, &command)
   end
@@ -69,7 +69,7 @@ module Commander
   def run(cmdline=ARGV)
     name, *args = cmdline
     name, args = :main, [name, *args] if name.nil? || COMMANDS[name.to_sym].nil? && COMMANDS[:main]
-    Commander.call name.to_sym, args.compact
+    Commandant.call name.to_sym, args.compact
   end
   module_function :run
 

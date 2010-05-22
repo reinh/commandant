@@ -1,4 +1,4 @@
-module Commander
+module Commandant
   class Command
     attr_reader :description
 

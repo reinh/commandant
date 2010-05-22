@@ -3,7 +3,7 @@
 The simplest possible command line subcommand tool. It provides about half of
 what you want and none of what you don't. If you don't like it, don't use it.
 
-Example:
+== Example:
 
     #!/usr/bin/env ruby -rubygems
     require 'commander'

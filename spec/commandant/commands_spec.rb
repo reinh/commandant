@@ -1,8 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Commander::Command do
-  before  { Commander.clear! }
-  subject { Commander::Command }
+describe Commandant::Command do
+  before  { Commandant.clear! }
+  subject { Commandant::Command }
 
   describe ".new" do
     it "requres a name" do
@@ -21,22 +21,22 @@ describe Commander::Command do
 
     it "adds the command to the list of commands by name" do
       command = subject.new(:name){ "block" }
-      Commander::COMMANDS[:name].should == command
+      Commandant::COMMANDS[:name].should == command
     end
 
     describe "when the command already exists" do
-      before { Commander::Command.new(:dup) { "I am a duplicate" } }
+      before { Commandant::Command.new(:dup) { "I am a duplicate" } }
 
       it do
         lambda {
-          Commander.command(:dup) { "I am a duplicate" }
+          Commandant.command(:dup) { "I am a duplicate" }
         }.should raise_error(ArgumentError)
       end
     end
   end
 
   describe "#call" do
-    subject { Commander::Command.new(:name){ "called" } }
+    subject { Commandant::Command.new(:name){ "called" } }
 
     it "calls the given command" do
       subject.call.should == "called"

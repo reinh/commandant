@@ -1,5 +1,5 @@
-require 'lib/commander'
-include Commander
+require 'lib/commandant'
+include Commandant
 
 command :main do
   print "main"
