@@ -1,0 +1,14 @@
+v0.2.0
+======
+5adfe67  Version bump to 0.2.0
+2d5766a  Change name to commandant
+04945c5  Update README
+2eafab0  Version bump to 0.1.1
+87e4ccc  Fig bug when command called without any arguments
+defbcdf  Version bump to 0.1.0
+512cc72  Add aliases with add_alias
+15379fc  Run a :main command by default
+3ab2dc7  Version bump to 0.0.0
+5ae789f  Initial commit of Commander
+79d7ea8  Initial commit to commander.
+
