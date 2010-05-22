@@ -68,8 +68,11 @@ module Commandant
   # @raise [UnknownCommand] command is unknown and no :main command is available
   def run(cmdline=ARGV)
     name, *args = cmdline
-    name, args = :main, [name, *args] if name.nil? || COMMANDS[name.to_sym].nil? && COMMANDS[:main]
-    Commandant.call name.to_sym, args.compact
+    name = name.to_sym if name
+
+    name, *args = :main, name, *args unless COMMANDS[name]
+
+    Commandant.call name, args.compact
   end
   module_function :run
 
