@@ -5,9 +5,11 @@ what you want and none of what you don't. If you don't like it, don't use it.
 
 == Example:
 
+=== <tt>basic</tt> executable:
+
     #!/usr/bin/env ruby -rubygems
-    require 'commander'
-    include Commander
+    require 'commandant'
+    include Commandant
 
     command :hello do
       puts "Hello, World!"
@@ -18,6 +20,11 @@ what you want and none of what you don't. If you don't like it, don't use it.
     end
 
     run
+
+=== Provides:
+
+* <tt>basic hello</tt>
+* <tt>basic argprint foo bar bazz
 
 == Note on Patches/Pull Requests
 
