@@ -55,7 +55,7 @@ module Commandant
   #   end
   #
   #   Commandant.run "argprint foo bizz bazz"
-  def command(name, description="", &command)
+  def command(name, description=nil, &command)
     Command.new(name, description, &command)
   end
   module_function :command
